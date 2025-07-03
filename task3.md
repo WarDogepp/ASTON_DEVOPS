@@ -8,7 +8,7 @@ touch /opt/app/log.txt
 
 ## Бесконечный цикл с генерацией строки , запись в log.txt и слип на 17 секунд
 
-
+```
 while true; do
 
     RANDOM_STRING=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 20)
@@ -20,11 +20,11 @@ while true; do
 
 done
 
-
+```
 
 
 ## Сам скрипт 
-
+```
 #!/bin/bash
 
 
@@ -43,3 +43,4 @@ while true; do
 
 
 done
+```
