@@ -1,0 +1,30 @@
+---
+- name: Обновление, установка Nginx и замена страницы
+  hosts: servers
+  become: true
+
+  tasks:
+    - name: Обновить кэш и выполнить дистрибутивное обновление
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Установить Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Разместить собственную страницу index.html
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+            <head><meta charset="utf-8"><title>Привет от Ansible!</title></head>
+            <body>
+              <h1>Это Nginx, развернутый Ansible</h1>
+            </body>
+          </html>
+        owner: www-data
+        group: www-data
+        mode: '0644'
